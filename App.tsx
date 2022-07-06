@@ -5,8 +5,11 @@ import {
   SafeAreaView,
   View,
   Text,
+  Button,
 } from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { TabView, SceneMap } from 'react-native-tab-view';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Timer = () => {
   const [timer, setTimer] = useState(1000);
@@ -23,7 +26,18 @@ const Timer = () => {
 };
 
 const FirstRoute = () => {
-  return <View style={styles.tab1}>{Array(300).fill(<Timer />)}</View>;
+  const navigation = useNavigation();
+
+  return (
+    <View style={styles.tab1}>
+      <Button
+        title="Go to Details"
+        // @ts-ignore
+        onPress={() => navigation.navigate('Details')}
+      />
+      {Array(300).fill(<Timer />)}
+    </View>
+  );
 };
 
 const SecondRoute = () => <View style={styles.tab2} />;
@@ -38,7 +52,7 @@ const renderScene = SceneMap({
   second: SecondRoute,
 });
 
-const App = () => {
+const HomeScreen = () => {
   const [index, setIndex] = useState(0);
   const layout = useWindowDimensions();
 
@@ -51,6 +65,27 @@ const App = () => {
         initialLayout={{ width: layout.width }}
       />
     </SafeAreaView>
+  );
+};
+
+const DetailsScreen = () => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text>Details Screen</Text>
+    </SafeAreaView>
+  );
+};
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
