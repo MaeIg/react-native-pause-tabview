@@ -75,8 +75,20 @@ const FirstRoute = () => {
         onPress={() => navigation.navigate('Details')}
       />
       <View style={styles.tab1}>
-        <View>{Array(20).fill(<Ring />)}</View>
-        <View>{Array(20).fill(<Timer />)}</View>
+        <View>
+          {Array(20)
+            .fill(null)
+            .map((_, index) => (
+              <Ring key={`ring-${index}`} />
+            ))}
+        </View>
+        <View>
+          {Array(20)
+            .fill(null)
+            .map((_, index) => (
+              <Timer key={`timer-${index}`} />
+            ))}
+        </View>
       </View>
     </>
   );
