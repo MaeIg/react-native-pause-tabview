@@ -20,6 +20,20 @@ import Animated, {
   interpolate,
 } from 'react-native-reanimated';
 
+const Timer = () => {
+  const [timer, setTimer] = useState(1000);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(oldTimer => oldTimer - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  });
+
+  return <Text>{timer}</Text>;
+};
+
 const Ring = () => {
   const ring = useSharedValue(0);
 
@@ -60,7 +74,10 @@ const FirstRoute = () => {
         // @ts-ignore
         onPress={() => navigation.navigate('Details')}
       />
-      <View style={styles.tab1}>{Array(20).fill(<Ring />)}</View>
+      <View style={styles.tab1}>
+        <View>{Array(20).fill(<Ring />)}</View>
+        <View>{Array(20).fill(<Timer />)}</View>
+      </View>
     </>
   );
 };
@@ -121,16 +138,17 @@ const styles = StyleSheet.create({
   },
   tab1: {
     flex: 1,
-    backgroundColor: '#ff4081',
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    backgroundColor: '#ffffff',
   },
   tab2: {
     flex: 1,
     backgroundColor: '#673ab7',
   },
   ring: {
-    width: 80,
-    height: 80,
+    width: 20,
+    height: 20,
     borderRadius: 40,
     borderColor: 'tomato',
     borderWidth: 10,
