@@ -13,6 +13,7 @@
     "@react-navigation/native": "^6.0.11",
     "@react-navigation/native-stack": "^6.7.0",
     "react": "18.0.0",
+    "react-freeze": "^1.0.0",
     "react-native": "0.69.1",
     "react-native-pager-view": "^5.4.25",
     "react-native-reanimated": "^2.9.1",
