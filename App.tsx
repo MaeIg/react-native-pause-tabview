@@ -7,9 +7,11 @@ import {
   Text,
   Button,
 } from 'react-native';
+
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { enableFreeze } from 'react-native-screens';
 
 import Animated, {
   useAnimatedStyle,
@@ -19,6 +21,9 @@ import Animated, {
   withTiming,
   interpolate,
 } from 'react-native-reanimated';
+
+// It is to natively enable freeze on react-native-screens (no need to use react-freeze here)
+enableFreeze();
 
 const Timer = () => {
   const [timer, setTimer] = useState(1000);
