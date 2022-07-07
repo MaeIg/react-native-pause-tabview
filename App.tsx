@@ -9,9 +9,11 @@ import {
 } from 'react-native';
 
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import { TabView } from 'react-native-tab-view';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import { enableFreeze } from 'react-native-screens';
+import { Freeze } from 'react-freeze';
 
 import Animated, {
   useAnimatedStyle,
@@ -69,11 +71,11 @@ const Ring = () => {
   return <Animated.View style={[styles.ring, ringStyle]} />;
 };
 
-const FirstRoute = () => {
+const FirstRoute = ({ isSelected }: { isSelected: boolean }) => {
   const navigation = useNavigation();
 
   return (
-    <>
+    <Freeze freeze={!isSelected}>
       <Button
         title="Go to Details"
         // @ts-ignore
@@ -95,7 +97,7 @@ const FirstRoute = () => {
             ))}
         </View>
       </View>
-    </>
+    </Freeze>
   );
 };
 
@@ -106,14 +108,24 @@ const routes = [
   { key: 'second', title: 'Second' },
 ];
 
-const renderScene = SceneMap({
-  first: FirstRoute,
-  second: SecondRoute,
-});
+const renderSceneWithIndex =
+  ({ index }: { index: number }) =>
+  ({ route }: { route: { key: string; title: string } }) => {
+    switch (route.key) {
+      case 'first':
+        return <FirstRoute isSelected={index === 0} />;
+      case 'second':
+        return <SecondRoute />;
+      default:
+        return null;
+    }
+  };
 
 const HomeScreen = () => {
   const [index, setIndex] = useState(0);
   const layout = useWindowDimensions();
+
+  const renderScene = renderSceneWithIndex({ index });
 
   return (
     <SafeAreaView style={styles.container}>
