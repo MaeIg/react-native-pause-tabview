@@ -34,6 +34,7 @@ The app contains 2 screens :
 ## Measures
 
 - [Test performance improvements with react-freeze](docs/performances/react-freeze.md)
+- [Test performance cost of setInterval](docs/performances/timer.md)
 
 ## Results
 
