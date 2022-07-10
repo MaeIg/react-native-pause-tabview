@@ -4,8 +4,8 @@
 
 We compare 2 cases:
 
-- The first screen contains 20 Timers that are re-rendering each frame.
-- The first screen contains 20 Timers that are re-rendering each frame **and** 20 animations (loop mode).
+- [The first screen contains 20 Timers that are re-rendering each frame.](../../src/apps/AppWithTimer.tsx)
+- [The first screen contains 20 Timers that are re-rendering each frame **and** 20 animations (loop mode).](../../src/apps/AppWithTimerAndAnimation.tsx)
 
 We test performances on the 2 tabs of first screen and on the second screen for 3 scenarii:
 

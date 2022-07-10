@@ -8,6 +8,14 @@ This repo was created to do some performance tests with react-navigation, react-
 
 Performances are mesured with [react-native-flipper-performance-plugin](https://github.com/bamlab/react-native-flipper-performance-monitor) on a [Huawei p20 lite](https://browser.geekbench.com/search?q=huawei+p20+lite).
 
+To test the different scenarii you can import the App of your choice in the `App.tsx` file from `src/apps`:
+
+```tsx
+import App from './src/apps/AppWithTimerAndAnimation';
+
+export default App;
+```
+
 ## App
 
 The app contains 2 screens :
