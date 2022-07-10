@@ -1,3 +1,3 @@
-import App from './src/apps/AppWithTimerAndAnimation';
+import App from './src/apps/AppWithKillList';
 
 export default App;
