@@ -35,10 +35,13 @@ The app contains 2 screens :
 
 - [Test performance improvements with react-freeze](docs/performances/react-freeze.md)
 - [Test performance cost of setInterval](docs/performances/timer.md)
+- [Test performance improvements with react-freeze when JS thread is killed](docs/performances/flatlist.md)
 
 ## Results
 
-Freezing doesn't seem to improve performance. However when we look on the profiler, all renders are cancelled...
+- react-freeze doesn't help for UI thread (ie: animations).
+- It takes some performance when active (ie: ~5 fps on a [Huawei p20 lite](https://browser.geekbench.com/search?q=huawei+p20+lite)).
+- But it is really usefull on inefficient screens and it prevents threadlock by cancelling all re-renders of frozen screens.
 
 <!-- prettier-ignore -->
 | Home | Tab 2 | Screen 2 |
