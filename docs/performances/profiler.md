@@ -18,4 +18,4 @@ When there are a `KillList` (100 elements unmounted and mounted each second):
 <!-- prettier-ignore -->
 | Home | Tab 2 | Screen 2 |
 | ---- | ----- | -------- |
-| - | - | - |
+| <img width="782" alt="Home" src="https://user-images.githubusercontent.com/40902940/178151647-6f4c78ac-34d1-4793-b737-bbaa6363da86.png"> | <img width="784" alt="tab2" src="https://user-images.githubusercontent.com/40902940/178151645-b2d432f8-7f4b-4eec-8bf2-7be0c11da54b.png"> | <img width="779" alt="screen2" src="https://user-images.githubusercontent.com/40902940/178151644-18c7d939-172b-4d07-9232-c8f263b323a2.png"> |
